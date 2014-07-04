@@ -11,6 +11,10 @@
 		333FD99219564E2C0013D224 /* soscore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 333FD99019564E2C0013D224 /* soscore.xcdatamodeld */; };
 		333FD99419564E2C0013D224 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 333FD99319564E2C0013D224 /* Images.xcassets */; };
 		333FD9A019564E2C0013D224 /* soscoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333FD99F19564E2C0013D224 /* soscoreTests.swift */; };
+		333FD9AB1956558A0013D224 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333FD9AA1956558A0013D224 /* Main.storyboard */; };
+		333FD9B1195656C60013D224 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333FD9B0195656C60013D224 /* ViewController.swift */; };
+		33F86F4B19665486004272B0 /* DetailedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33F86F4A19665486004272B0 /* DetailedView.xib */; };
+		33FA0D421957CEC8002780AC /* CustomCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33FA0D411957CEC8002780AC /* CustomCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +36,11 @@
 		333FD99919564E2C0013D224 /* soscoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = soscoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		333FD99E19564E2C0013D224 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		333FD99F19564E2C0013D224 /* soscoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soscoreTests.swift; sourceTree = "<group>"; };
+		333FD9A919564EB60013D224 /* soscore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soscore.entitlements; sourceTree = "<group>"; };
+		333FD9AA1956558A0013D224 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		333FD9B0195656C60013D224 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
+		33F86F4A19665486004272B0 /* DetailedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailedView.xib; path = ../DetailedView.xib; sourceTree = "<group>"; };
+		33FA0D411957CEC8002780AC /* CustomCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +82,11 @@
 		333FD98B19564E2C0013D224 /* soscore */ = {
 			isa = PBXGroup;
 			children = (
+				33F86F4A19665486004272B0 /* DetailedView.xib */,
+				333FD9AA1956558A0013D224 /* Main.storyboard */,
+				333FD9B0195656C60013D224 /* ViewController.swift */,
+				33FA0D411957CEC8002780AC /* CustomCellView.xib */,
+				333FD9A919564EB60013D224 /* soscore.entitlements */,
 				333FD98E19564E2C0013D224 /* AppDelegate.swift */,
 				333FD99319564E2C0013D224 /* Images.xcassets */,
 				333FD99019564E2C0013D224 /* soscore.xcdatamodeld */,
@@ -155,6 +169,12 @@
 				TargetAttributes = {
 					333FD98819564E2C0013D224 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 726KM98SC7;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					333FD99819564E2C0013D224 = {
 						CreatedOnToolsVersion = 6.0;
@@ -185,7 +205,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33F86F4B19665486004272B0 /* DetailedView.xib in Resources */,
+				333FD9AB1956558A0013D224 /* Main.storyboard in Resources */,
 				333FD99419564E2C0013D224 /* Images.xcassets in Resources */,
+				33FA0D421957CEC8002780AC /* CustomCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				333FD99219564E2C0013D224 /* soscore.xcdatamodeld in Sources */,
+				333FD9B1195656C60013D224 /* ViewController.swift in Sources */,
 				333FD98F19564E2C0013D224 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,9 +335,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = soscore/soscore.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = soscore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -322,9 +350,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = soscore/soscore.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = soscore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -383,6 +415,7 @@
 				333FD9A519564E2C0013D224 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		333FD9A619564E2C0013D224 /* Build configuration list for PBXNativeTarget "soscoreTests" */ = {
 			isa = XCConfigurationList;
@@ -391,6 +424,7 @@
 				333FD9A819564E2C0013D224 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

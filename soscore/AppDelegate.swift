@@ -16,9 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        
+        let nav = UINavigationController()
+        
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        
+        let vc : UITabBarController = storyboard.instantiateViewControllerWithIdentifier("MainTabController") as UITabBarController;
+        
+             // Push the vc onto the nav
+        nav.pushViewController(vc, animated: false)
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
-        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.backgroundColor = UIColor.blackColor()
+        self.window!.rootViewController = vc;
+        
         self.window!.makeKeyAndVisible()
         return true
     }
