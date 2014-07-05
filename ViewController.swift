@@ -15,14 +15,26 @@ var users : String[] = ["rohitj"]
 
 
 // put this in a separate file, once xcode beta is not buggy.
-class DetailedView : UIView {
+class DetailedView : UIViewController {
+   
     
-    @IBOutlet var user: UILabel!
     
-    @IBOutlet var view: DetailedView!
     func populateUser (user : String) {
-        self.user.text = user
+       // self.userLabel.text = user
     }
+    
+    override func awakeFromNib()  {
+        
+    }
+
+    init(coder aDecoder: NSCoder!)  {
+        super.init(coder: aDecoder)
+    }
+    
+    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
 }
 
 // put this in a separate file
@@ -124,12 +136,19 @@ func parseResult(result : NSDictionary) -> Array<String> {
     return table
 }
 
-class ViewController: UITableViewController, UITableViewDataSource {
+class ViewController: UITableViewController, UITableViewDataSource,UITabBarControllerDelegate {
  
     var table : Array<Array<String>> = [];
 
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController.delegate = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         table = getData(users);
     }
     
@@ -150,58 +169,63 @@ class ViewController: UITableViewController, UITableViewDataSource {
         return table.count + 1
     }
     
+    /*
     override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
         if (indexPath?.row == table.count) {
             return false;
         }
         return true;
     }
+    */
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        
-        if (indexPath.row > 0) {
-    let customNib:Array=NSBundle.mainBundle().loadNibNamed("DetailedView", owner: self, options: nil)
-            var detailedView : DetailedView = customNib[0] as DetailedView
-            detailedView.tag = 11
-            detailedView.populateUser(table[indexPath.row-1][0])
-            tableView.addSubview(detailedView)
-        }
-    }
-        
+    /*
     override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             //table.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
-    }
+    }*/
     
     override func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
         return 30;
      }
     
+ 
+   override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        println("executed")
+        
+        
+       self.performSegueWithIdentifier("CELL", sender: self)
+       //self.tableView.cellForRowAtIndexPath(indexPath))
+    
+    
+    }
+    
+   
+    
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         var number = table.count
         
-        if indexPath?.row == 0 {
-            var cell : CustomCellView! = tableView.dequeueReusableCellWithIdentifier("CustomCellView") as? CustomCellView
+        //if indexPath?.row == 0 {
+           /* var cell : CustomCellView! = tableView.dequeueReusableCellWithIdentifier("CustomCellView") as? CustomCellView
             if (cell == nil) {
                 let customNib:Array=NSBundle.mainBundle().loadNibNamed("CustomCellView", owner: self, options: nil)
                 cell = customNib[0] as? CustomCellView
             }
+            
             return cell
         }
-        else {
+        else {*/
             var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as UITableViewCell!
             if (cell == nil) {
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "CELL")
             }
-            let row = indexPath.row - 1
+            let row = indexPath.row //- 1
             println(table)
-            cell!.textLabel.text = table[row][0]
+            cell!.textLabel.text = "test"//table[row][0]
             //cell!.textLabel.text = table[row][0]
-            cell!.detailTextLabel.text = table[row][1]
-            
+            cell!.detailTextLabel.text = "test"//table[row][1]
             
             let url = NSURL.URLWithString("http://graph.facebook.com/2201571/picture?type=large");
             var err: NSError?
@@ -210,6 +234,6 @@ class ViewController: UITableViewController, UITableViewDataSource {
             var image : UIImage = UIImage(data:imageData)
             cell.imageView.image = image
             return cell
-        }
+       // }
     }
 }

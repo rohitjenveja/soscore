@@ -19,16 +19,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nav = UINavigationController()
         
+       // UINavigationController *nav =[self.storyboard instantiateViewControllerWithIdentifier:@"TicketsListNav"];
+
+        
         let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
+        
+        //let nav : AnyObject! = storyboard.instantiateViewControllerWithIdentifier("boom")
         
         let vc : UITabBarController = storyboard.instantiateViewControllerWithIdentifier("MainTabController") as UITabBarController;
         
              // Push the vc onto the nav
+        
+        
+        
         nav.pushViewController(vc, animated: false)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
-        self.window!.backgroundColor = UIColor.blackColor()
+        self.window!.backgroundColor = UIColor.whiteColor()
+        
         self.window!.rootViewController = vc;
         
         self.window!.makeKeyAndVisible()
